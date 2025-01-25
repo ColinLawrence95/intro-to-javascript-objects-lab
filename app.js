@@ -76,10 +76,11 @@ let tankyMember = pokemon.find(pokemon => pokemon.hp === bestHP);
 game.party.push(tankyMember);
 
 //since i have a grass and normal, I would like a new type. Lets select fighting
+//finding first pokemon on list with a fighting type
 let throwingHandsMember = pokemon.find(pokemon => pokemon.type === "fighting");
 game.party.push(throwingHandsMember);
 
-//I will also add Mewtwo cause he is overpowered
+//I will also add Mewtwo by his name cause he is overpowered
 let mewtwo = pokemon.find(pokemon => pokemon.name === "Mewtwo");
 game.party.push(mewtwo);
 
@@ -296,7 +297,7 @@ game.gymStatus = function()
                 gymTally.incompleted++;
             }
         });
-        console.log(game.gyms, gymTally);
+        console.log(gymTally);
 }
 game.gymStatus();
 
@@ -334,6 +335,8 @@ Solve Exercise 15 here:
 */
 //similar to ex6 and ex12. 
 beatGyms(8);
+//updating display for how many gyms we have completed
+game.gymStatus();
 
 /*//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /*
