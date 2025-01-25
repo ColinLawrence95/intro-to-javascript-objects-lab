@@ -1,4 +1,3 @@
-
 const game = {
   party: [],
   gyms: [
@@ -16,7 +15,7 @@ const game = {
     { name: "pokeball", quantity: 8 },
     { name: "rare candy", quantity: 99 },
   ],
-}
+};
 //console.dir(pokemon, { maxArrayLength: null })
 
 //exersize 1
@@ -27,7 +26,7 @@ const game = {
 //excersize 2
 // console.log(game)
 
-/*//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/*/ /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /*
 Exercise 3
 1. Add a new property to the `game` object. Let's call it "difficulty".
@@ -49,7 +48,7 @@ Solve Exercise 4 here:
 */
 
 //Pushing first pokemon found in array with starter: true
-let firstStarter = pokemon.find(pokemon => pokemon.starter === true);
+let firstStarter = pokemon.find((pokemon) => pokemon.starter === true);
 game.party.push(firstStarter);
 
 /*//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -64,24 +63,25 @@ Solve Exercise 5 here:
 
 //high HP. Finds the highest HP of all the listed pokemon
 let allHP = [];
-pokemon.forEach(pokemon =>
-{
-    //storing all hp in array allHP
-    allHP.push(pokemon.hp);
+pokemon.forEach((pokemon) => {
+  //storing all hp in array allHP
+  allHP.push(pokemon.hp);
 });
 //finding highest value of allHP
 bestHP = Math.max(...allHP);
 //storing value in tankyMember then pushing to party
-let tankyMember = pokemon.find(pokemon => pokemon.hp === bestHP);
+let tankyMember = pokemon.find((pokemon) => pokemon.hp === bestHP);
 game.party.push(tankyMember);
 
 //since i have a grass and normal, I would like a new type. Lets select fighting
 //finding first pokemon on list with a fighting type
-let throwingHandsMember = pokemon.find(pokemon => pokemon.type === "fighting");
+let throwingHandsMember = pokemon.find(
+  (pokemon) => pokemon.type === "fighting"
+);
 game.party.push(throwingHandsMember);
 
 //I will also add Mewtwo by his name cause he is overpowered
-let mewtwo = pokemon.find(pokemon => pokemon.name === "Mewtwo");
+let mewtwo = pokemon.find((pokemon) => pokemon.name === "Mewtwo");
 game.party.push(mewtwo);
 
 //console.log(game.party);
@@ -96,15 +96,12 @@ Exercise 6
 Solve Exercise 6 here:
 */
 //as it looks like we will be doing this a few times during the lab, I put it in a function to be called at will.
-function beatGyms(rating)
-{
-    game.gyms.forEach(gyms =>
-    {
-        if (gyms.difficulty < rating)
-        {
-            gyms.completed = true;
-        }
-    });
+function beatGyms(rating) {
+  game.gyms.forEach((gyms) => {
+    if (gyms.difficulty < rating) {
+      gyms.completed = true;
+    }
+  });
 }
 beatGyms(3);
 
@@ -131,7 +128,7 @@ Solve Exercise 7 here:
 */
 
 //replacing bulbasaur with ivysaur via index value
-game.party.splice(0,1,pokemon[1]);
+game.party.splice(0, 1, pokemon[1]);
 
 /*//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /*
@@ -145,10 +142,9 @@ Solve Exercise 8 here:
 //creating empyty array to store team names
 let currentTeam = [];
 //iterating through array and pushing names into it
-game.party.forEach(party =>
-{
-    currentTeam.push(party.name);
-})
+game.party.forEach((party) => {
+  currentTeam.push(party.name);
+});
 
 // console.log(currentTeam);
 
@@ -166,12 +162,10 @@ Solve Exercise 9 here:
 //creating empty array to store all names
 let starterNames = [];
 //iterating through pokemon object, finding when starter is true and pushing those names to starterNames
-pokemon.forEach(pokemon =>
-{
-    if (pokemon.starter === true)
-    {
-        starterNames.push(pokemon.name);
-    }
+pokemon.forEach((pokemon) => {
+  if (pokemon.starter === true) {
+    starterNames.push(pokemon.name);
+  }
 });
 
 //console.log(starterNames);
@@ -191,11 +185,10 @@ Solve Exercise 10 here:
 */
 
 //creating new method for game object
-game.catchPokemon = function(pokemonObj)
-{
-    //pushing passed through object to party
-    game.party.push(pokemonObj);
-}
+game.catchPokemon = function (pokemonObj) {
+  //pushing passed through object to party
+  game.party.push(pokemonObj);
+};
 //calling method to catch me a dragonite
 game.catchPokemon(pokemon[148]);
 
@@ -215,21 +208,18 @@ Solve Exercise 11 here:
 */
 
 //creating new method for game object
-game.catchPokemon2 = function(pokemonObj)
-{
-    //iterating through all the items
-    game.items.forEach(items =>
-    {
-        //checking if item name matches pokeball
-        if (items.name === "pokeball")
-        {
-            //decrementing quantity by once
-            items.quantity--
-            //pushing new pokemon to party
-            game.party.push(pokemonObj);
-        }
-    });
-}
+game.catchPokemon2 = function (pokemonObj) {
+  //iterating through all the items
+  game.items.forEach((items) => {
+    //checking if item name matches pokeball
+    if (items.name === "pokeball") {
+      //decrementing quantity by once
+      items.quantity--;
+      //pushing new pokemon to party
+      game.party.push(pokemonObj);
+    }
+  });
+};
 // calling method to catch me a arcanine
 game.catchPokemon2(pokemon[58]);
 
@@ -275,30 +265,25 @@ For example, if five gym objects have a value of `true` on their `completed` pro
 Solve Exercise 13 here:
 */
 //creating new method for game
-game.gymStatus = function()
-{
-    //making an object for gymTally
-    const gymTally = 
-     {
-        completed: 0,
-        incompleted: 0,
-     }
-     //iterating through gyms to check which ones are completed and not completed
-     game.gyms.forEach(gyms =>
-        {
-            if (gyms.completed === true)
-            {
-                //adding to completed
-                gymTally.completed++;
-            }
-            if (gyms.completed === false)
-            {
-                //adding to incompleted
-                gymTally.incompleted++;
-            }
-        });
-        console.log(gymTally);
-}
+game.gymStatus = function () {
+  //making an object for gymTally
+  const gymTally = {
+    completed: 0,
+    incompleted: 0,
+  };
+  //iterating through gyms to check which ones are completed and not completed
+  game.gyms.forEach((gyms) => {
+    if (gyms.completed === true) {
+      //adding to completed
+      gymTally.completed++;
+    }
+    if (gyms.completed === false) {
+      //adding to incompleted
+      gymTally.incompleted++;
+    }
+  });
+  console.log(gymTally);
+};
 game.gymStatus();
 
 /*//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -315,12 +300,11 @@ This method should:
 Solve Exercise 14 here:
 */
 //making new method for game
-game.partyCount = function()
-{
-    //setting party size to be equal to party length
-    let partySize = game.party.length
-    //console.log(partySize);
-}
+game.partyCount = function () {
+  //setting party size to be equal to party length
+  let partySize = game.party.length;
+  //console.log(partySize);
+};
 //calling function
 game.partyCount();
 
@@ -333,7 +317,7 @@ Exercise 15
 
 Solve Exercise 15 here:
 */
-//similar to ex6 and ex12. 
+//similar to ex6 and ex12.
 beatGyms(8);
 //updating display for how many gyms we have completed
 game.gymStatus();
